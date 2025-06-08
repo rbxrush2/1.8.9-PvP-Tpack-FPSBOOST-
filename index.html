@@ -52,9 +52,14 @@
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
+      cursor: pointer;
     }
     .btn:hover {
       background-color: #00e6b8;
+    }
+    #status {
+      margin-top: 1rem;
+      color: #ccc;
     }
     footer {
       text-align: center;
@@ -84,13 +89,32 @@
   </section>
 
   <div class="download">
-    <a class="btn" href="http://adfoc.us/872640110587529" target="_blank">Download Pack</a>
+    <button class="btn" onclick="startCooldown()">Download Pack</button>
+    <div id="status"></div>
   </div>
 
   <footer>
     © 2025 YourName | Designed for Minecraft 1.8.9 PvP
   </footer>
 
+  <script>
+    function startCooldown() {
+      let seconds = 3;
+      const status = document.getElementById('status');
+      status.innerText = `Redirecting in ${seconds}...`;
+
+      const countdown = setInterval(() => {
+        seconds--;
+        if (seconds > 0) {
+          status.innerText = `Redirecting in ${seconds}...`;
+        } else {
+          clearInterval(countdown);
+          status.innerText = 'Redirecting...';
+          window.location.href = "http://adfoc.us/872640110587529";
+        }
+      }, 1000);
+    }
+  </script>
+
 </body>
 </html>
-
